@@ -1,0 +1,36 @@
+<div class="grid-container">
+  <!--<h1 class="mat-h1">Ventas</h1>-->
+  <mat-grid-list cols="6" rowHeight="17vh">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
+        <div *ngIf="card.title === 'search_panel'" class="search_panel">
+          <app-search-bar></app-search-bar>
+        </div>
+        <div *ngIf="card.title === 'list_panel'">
+          <app-list-panel></app-list-panel>
+        </div>
+        <div *ngIf="card.title === 'total_panel'">
+          <app-total-panel></app-total-panel>
+        </div>
+
+
+        <!--<mat-card-header>
+          <mat-card-title>
+            {{card.title}}
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>Card Content Here</div>
+        </mat-card-content>-->
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <app-selection-list></app-selection-list>
+</div>

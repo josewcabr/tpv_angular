@@ -1,0 +1,17 @@
+.panel{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.client_opc{
+  margin-left: 10vw;
+  align-self: center;
+}
+
+.client_opc button{
+  margin-left: 25px;
+}
+
+mat-form-field{
+  width: 18vw;
+}
