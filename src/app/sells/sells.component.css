@@ -27,8 +27,16 @@
   align-items: center;
   justify-content: center;
 }
-
-app-selection-list{
+.emergente{
+  width: 60vw;
+  width: 60vw;
+  height: auto;
+  background-color: yellow;
+  position: absolute;
   z-index: 10;
-  position: relative;
+  top: 30%;
+  left: 15%;
+  border-radius: 5px;
+
 }
+

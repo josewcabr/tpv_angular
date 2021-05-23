@@ -25,10 +25,11 @@ import { TotalPanelComponent } from './sells/total-panel/total-panel.component';
 import {FormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {FetchApiService} from './services/fetch-api.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ProductsService} from './services/products.service';
-import { SelectionListComponent } from './sells/selection-list/selection-list.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
+import { SelectionlistComponent } from './sells/selectionlist/selectionlist.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { SelectionListComponent } from './sells/selection-list/selection-list.co
     SearchBarComponent,
     ListPanelComponent,
     TotalPanelComponent,
-    SelectionListComponent
+    SelectionlistComponent
+
   ],
   imports: [
     BrowserModule,
@@ -61,10 +63,12 @@ import { SelectionListComponent } from './sells/selection-list/selection-list.co
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    MatTableModule
   ],
-  providers: [FetchApiService,
-    ProductsService],
+  providers: [ProductsService],
+  entryComponents: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

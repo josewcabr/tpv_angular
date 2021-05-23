@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {FetchApiService} from '../../services/fetch-api.service';
 import {ProductsService} from '../../services/products.service';
 import {Subscription} from 'rxjs';
 import {Products} from '../../models/products';

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SelectionListComponent } from './selection-list.component';
+import { SelectionlistComponent } from './selectionlist.component';
 
-describe('SelectionListComponent', () => {
-  let component: SelectionListComponent;
-  let fixture: ComponentFixture<SelectionListComponent>;
+describe('SelectionlistComponent', () => {
+  let component: SelectionlistComponent;
+  let fixture: ComponentFixture<SelectionlistComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SelectionListComponent ]
+      declarations: [ SelectionlistComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SelectionListComponent);
+    fixture = TestBed.createComponent(SelectionlistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

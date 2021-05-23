@@ -1,13 +1,19 @@
-import { Component } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import {ProductsService} from '../services/products.service';
+import {Products} from '../models/products';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-sells',
   templateUrl: './sells.component.html',
   styleUrls: ['./sells.component.css']
 })
-export class SellsComponent {
+export class SellsComponent implements OnInit{
+  public products: Products[];
+  clickEventSubscription: Subscription;
+
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
@@ -27,5 +33,16 @@ export class SellsComponent {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private productsService: ProductsService) {}
+
+  ngOnInit(): void {
+    this.productsService.getProduct().subscribe(
+      res => {
+        this.products = res;
+      }
+      ,
+      err => console.error(err));
+  }
+
+
 }

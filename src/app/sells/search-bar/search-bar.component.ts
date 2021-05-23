@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductsService} from '../../services/products.service';
+import {Products} from '../../models/products';
+
 
 @Component({
   selector: 'app-search-bar',
@@ -9,6 +11,7 @@ import {ProductsService} from '../../services/products.service';
 export class SearchBarComponent implements OnInit {
 
   value = '';
+  public arrayProd: Products[];
 
   constructor(private productsService: ProductsService) { }
 
@@ -18,6 +21,7 @@ export class SearchBarComponent implements OnInit {
   cargarListaProd(): void{
     this.productsService.sendEvent();
   }
+
 
 
 }
