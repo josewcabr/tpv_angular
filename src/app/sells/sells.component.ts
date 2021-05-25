@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import {ProductsService} from '../services/products.service';
 import {Products} from '../models/products';
 import {Subscription} from 'rxjs';
+import {SelectionlistComponent} from './selectionlist/selectionlist.component';
 
 @Component({
   selector: 'app-sells',
@@ -15,6 +16,9 @@ export class SellsComponent implements OnInit{
   public filteredProducts: Products[];
   clickEventSubscription: Subscription;
   public panelSeleccion: boolean;
+
+  @ViewChild('componentLista')
+  componentLista: SelectionlistComponent;
 
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
@@ -49,7 +53,7 @@ export class SellsComponent implements OnInit{
 
   procesarPistaBuscar(pista): void{
     this.filteredProducts = this.products.filter(prod => prod.name.toLowerCase().includes(pista));
-
+    this.componentLista.ventanaSeleccion = false;
     this.panelSeleccion = false;
     console.log(this.filteredProducts);
   }
