@@ -20,7 +20,7 @@
 
 </div>
 <div class="opciones" [ngClass]="{'oculto':ventanaSeleccion}">
-  <button mat-raised-button color="warn" >Cancelar</button>
+  <button mat-raised-button color="warn" (click)="ventanaSeleccion=true">Cancelar</button>
 </div>
 
 <div class="cantidad" [ngClass]="{'oculto': ventanaCantidad}">

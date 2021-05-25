@@ -3,6 +3,7 @@ import {Subscription} from 'rxjs';
 import {ProductsService} from '../../services/products.service';
 import {Products} from '../../models/products';
 import {MatDialog} from '@angular/material/dialog';
+import {ProductoSeleccionado} from '../../models/producto-seleccionado';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class SelectionlistComponent implements OnInit {
   public selectedProd: Products;
   public cantidad: any;
 
+  public prodSeleccionado: ProductoSeleccionado;
   ventanaSeleccion: boolean;
   ventanaCantidad: boolean;
 
@@ -39,6 +41,10 @@ export class SelectionlistComponent implements OnInit {
   asignarCantidadProd(value: string): void{
     this.cantidad = parseInt(value, 10);
     this.ventanaCantidad = true;
+
+    this.prodSeleccionado.cantidad = this.cantidad;
+    this.prodSeleccionado.producto = this.selectedProd;
+
     console.log(this.cantidad, this.selectedProd);
   }
 
