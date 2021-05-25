@@ -5,6 +5,8 @@ import {ProductsService} from '../services/products.service';
 import {Products} from '../models/products';
 import {Subscription} from 'rxjs';
 import {SelectionlistComponent} from './selectionlist/selectionlist.component';
+import {ListPanelComponent} from './list-panel/list-panel.component';
+import {ProductoSeleccionado} from '../models/producto-seleccionado';
 
 @Component({
   selector: 'app-sells',
@@ -19,6 +21,9 @@ export class SellsComponent implements OnInit{
 
   @ViewChild('componentLista')
   componentLista: SelectionlistComponent;
+
+  productoSeleccionado: ProductoSeleccionado;
+
 
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
@@ -55,11 +60,11 @@ export class SellsComponent implements OnInit{
     this.filteredProducts = this.products.filter(prod => prod.name.toLowerCase().includes(pista));
     this.componentLista.ventanaSeleccion = false;
     this.panelSeleccion = false;
-    console.log(this.filteredProducts);
+    // console.log(this.filteredProducts);
   }
 
   procesarProd(prod): void{
-    console.log(prod);
+    this.productoSeleccionado = prod;
   }
 
 

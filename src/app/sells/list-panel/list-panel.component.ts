@@ -1,32 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import {ProductsService} from '../../services/products.service';
-import {Subscription} from 'rxjs';
+import {Component, Input, OnInit, OnChanges} from '@angular/core';
 import {Products} from '../../models/products';
+import {ProductoSeleccionado} from '../../models/producto-seleccionado';
 
 @Component({
   selector: 'app-list-panel',
   templateUrl: './list-panel.component.html',
   styleUrls: ['./list-panel.component.css']
 })
-export class ListPanelComponent implements OnInit {
-  clickEventSubscription: Subscription;
+export class ListPanelComponent implements OnInit, OnChanges {
+
 
   public products: Products[];
+  public productosSeleccionados: ProductoSeleccionado[];
 
-  constructor(private productsService: ProductsService) {
-    this.clickEventSubscription = this.productsService.
-      getProduct().
-      subscribe(
-        res => {
-          this.products = res;
-          },
-        err => console.error(err)
-    );
+  @Input()
+  public producto: ProductoSeleccionado;
+
+  constructor() {
+    this.productosSeleccionados = [];
   }
 
   ngOnInit(): void {
   }
 
+
+  ngOnChanges(): void{
+    if (this.productosSeleccionados[0] === undefined){
+      this.productosSeleccionados.pop();
+    }
+    this.productosSeleccionados.push(this.producto);
+    console.log(this.productosSeleccionados);
+  }
 
 
 

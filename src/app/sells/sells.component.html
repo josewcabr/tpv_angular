@@ -7,7 +7,7 @@
           <app-search-bar (pistaProductoEmit)="procesarPistaBuscar($event)"></app-search-bar>
         </div>
         <div *ngIf="card.title === 'list_panel'">
-          <app-list-panel></app-list-panel>
+          <app-list-panel [producto]="productoSeleccionado"></app-list-panel>
         </div>
         <div *ngIf="card.title === 'total_panel'">
           <app-total-panel></app-total-panel>
