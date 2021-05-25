@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {ProductsService} from '../../services/products.service';
 import {Products} from '../../models/products';
@@ -21,6 +21,9 @@ export class SelectionlistComponent implements OnInit {
   ventanaSeleccion: boolean;
   ventanaCantidad: boolean;
 
+  @Output()
+  prodEmit = new EventEmitter<ProductoSeleccionado>();
+
   constructor(public dialog: MatDialog) {
     this.cantidad = 0;
     // this.ventanaSeleccion = false;
@@ -42,10 +45,10 @@ export class SelectionlistComponent implements OnInit {
     this.cantidad = parseInt(value, 10);
     this.ventanaCantidad = true;
 
-    this.prodSeleccionado.cantidad = this.cantidad;
-    this.prodSeleccionado.producto = this.selectedProd;
+    this.prodSeleccionado = new ProductoSeleccionado(this.cantidad, this.selectedProd);
+    this.prodEmit.emit(this.prodSeleccionado);
 
-    console.log(this.cantidad, this.selectedProd);
+    this.cantidad = 0;
   }
 
 

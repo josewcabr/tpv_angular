@@ -58,5 +58,9 @@ export class SellsComponent implements OnInit{
     console.log(this.filteredProducts);
   }
 
+  procesarProd(prod): void{
+    console.log(prod);
+  }
+
 
 }
