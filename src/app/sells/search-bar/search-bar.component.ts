@@ -11,7 +11,6 @@ import {Products} from '../../models/products';
 export class SearchBarComponent implements OnInit {
 
   value = '';
-  public arrayProd: Products[];
 
   constructor(private productsService: ProductsService) { }
 
@@ -22,6 +21,9 @@ export class SearchBarComponent implements OnInit {
     this.productsService.sendEvent();
   }
 
+  inputContent(value): void {
+    console.log(value);
+  }
 
 
 }

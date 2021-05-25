@@ -1,9 +1,25 @@
 <div class="container">
-  <ul>
-    <li *ngFor="let prod of products">{{prod.name}}</li>
-  </ul>
-</div>
+  <table>
+    <thead>
+     <tr>
+       <th>ID</th>
+       <th>Nombre</th>
+       <th>Tipo de prenda</th>
+       <th>precio</th>
+     </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prod of products" (click)="clickeado(prod)">
+        <td>{{prod.id}}</td>
+        <td>{{prod.name}}</td>
+        <td>{{prod.wearType}}</td>
+        <td>{{prod.price}}</td>
+      </tr>
+    </tbody>
+  </table>
 
-<table>
-  <th></th>
-</table>
+</div>
+<div class="opciones">
+  <button mat-flat-button color="primary">Aceptar</button>
+  <button mat-raised-button color="warn">Cancelar</button>
+</div>

@@ -28,15 +28,14 @@
   justify-content: center;
 }
 .emergente{
-  width: 60vw;
-  width: 60vw;
+  width: 50vw;
   height: auto;
   background-color: yellow;
   position: absolute;
   z-index: 10;
-  top: 30%;
+  top: 25%;
   left: 15%;
   border-radius: 5px;
-
+  display: none;
 }
 

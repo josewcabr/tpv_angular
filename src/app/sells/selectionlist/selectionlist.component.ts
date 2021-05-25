@@ -10,7 +10,6 @@ import {Products} from '../../models/products';
   styleUrls: ['./selectionlist.component.css']
 })
 export class SelectionlistComponent implements OnInit {
-  clickEventSubscription: Subscription;
 
   @Input() products: Products[];
 
@@ -19,6 +18,10 @@ export class SelectionlistComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
+  clickeado(event): void {
+    console.log(event);
+}
 
 
 }

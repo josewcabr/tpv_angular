@@ -1,4 +1,14 @@
 .container{
   height: 50vh;
-  overflow-x: scroll;
+  overflow-y: scroll;
+}
+.opciones{
+  position: relative;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.opciones button{
+  padding: 2px 30px;
 }

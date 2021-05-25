@@ -1,8 +1,8 @@
 <div class="panel">
   <mat-form-field>
     <mat-label>Buscar producto</mat-label>
-    <input matInput matInput type="text" [(ngModel)]="value">
-    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)=cargarListaProd()>
+    <input matInput matInput type="text" [(ngModel)]="value" (keydown.enter)=inputContent(value)>
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
       <mat-icon>close</mat-icon>
     </button>
 </mat-form-field>
@@ -10,12 +10,12 @@
     <input matInput type="text">
     <button mat-button>Buscar <mat-icon>search</mat-icon></button>
   </div>-->
-  <div class="client_opc">
-    <button mat-raised-button color="warn">Cancelar venta</button>
-    <button mat-flat-button color="primary">Seleccionar Cliente</button>
-  </div>
-</div>
 
+</div>
+<div class="client_opc">
+  <button mat-raised-button color="warn">Cancelar venta</button>
+  <button mat-flat-button color="primary">Seleccionar Cliente</button>
+</div>
 
 
 
