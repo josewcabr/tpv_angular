@@ -4,7 +4,7 @@
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
         <div *ngIf="card.title === 'search_panel'" class="search_panel">
-          <app-search-bar></app-search-bar>
+          <app-search-bar (pistaProductoEmit)="procesarPistaBuscar($event)"></app-search-bar>
         </div>
         <div *ngIf="card.title === 'list_panel'">
           <app-list-panel></app-list-panel>
@@ -16,7 +16,7 @@
     </mat-grid-tile>
   </mat-grid-list>
 
-  <app-selectionlist class="emergente" [products]="products"></app-selectionlist>
+  <app-selectionlist  class="emergente" [products]="filteredProducts" [ngClass]="{'oculto':panelSeleccion}"></app-selectionlist>
 
 
 

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" [ngClass]="{'oculto':ventanaSeleccion}">
   <table>
     <thead>
      <tr>
@@ -19,7 +19,13 @@
   </table>
 
 </div>
-<div class="opciones">
-  <button mat-flat-button color="primary">Aceptar</button>
-  <button mat-raised-button color="warn">Cancelar</button>
+<div class="opciones" [ngClass]="{'oculto':ventanaSeleccion}">
+  <button mat-raised-button color="warn" >Cancelar</button>
+</div>
+
+<div class="cantidad" [ngClass]="{'oculto': ventanaCantidad}">
+  <p>Especifica cantidad</p>
+  <input type="number" #cantidadProd>
+  <button mat-flat-button color="primary" (click)="asignarCantidadProd(cantidadProd.value)">Aceptar</button>
+  <button mat-raised-button color="warn"(click)="ventanaCantidad=true">Cancelar</button>
 </div>

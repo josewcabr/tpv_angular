@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import {ProductsService} from '../../services/products.service';
 import {Products} from '../../models/products';
 
@@ -9,6 +9,9 @@ import {Products} from '../../models/products';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
+
+  @Output()
+  pistaProductoEmit = new EventEmitter<string>();
 
   value = '';
 
@@ -23,6 +26,13 @@ export class SearchBarComponent implements OnInit {
 
   inputContent(value): void {
     console.log(value);
+  }
+
+  buscarProducto(pista): void{
+    if (pista !== ''){
+      this.pistaProductoEmit.emit(pista);
+      this.value = '';
+    }
   }
 
 

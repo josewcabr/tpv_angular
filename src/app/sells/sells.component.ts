@@ -12,7 +12,9 @@ import {Subscription} from 'rxjs';
 })
 export class SellsComponent implements OnInit{
   public products: Products[];
+  public filteredProducts: Products[];
   clickEventSubscription: Subscription;
+  public panelSeleccion: boolean;
 
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
@@ -36,12 +38,20 @@ export class SellsComponent implements OnInit{
   constructor(private breakpointObserver: BreakpointObserver, private productsService: ProductsService) {}
 
   ngOnInit(): void {
+    this.panelSeleccion = true;
     this.productsService.getProduct().subscribe(
       res => {
         this.products = res;
       }
       ,
       err => console.error(err));
+  }
+
+  procesarPistaBuscar(pista): void{
+    this.filteredProducts = this.products.filter(prod => prod.name.toLowerCase().includes(pista));
+
+    this.panelSeleccion = false;
+    console.log(this.filteredProducts);
   }
 
 

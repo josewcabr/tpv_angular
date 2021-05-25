@@ -1,7 +1,7 @@
 <div class="panel">
   <mat-form-field>
     <mat-label>Buscar producto</mat-label>
-    <input matInput matInput type="text" [(ngModel)]="value" (keydown.enter)=inputContent(value)>
+    <input matInput matInput type="text" [(ngModel)]="value" (keydown.enter)=buscarProducto(value)>
     <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
       <mat-icon>close</mat-icon>
     </button>

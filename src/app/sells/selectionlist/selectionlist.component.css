@@ -12,3 +12,31 @@
 .opciones button{
   padding: 2px 30px;
 }
+
+.container thead{
+  position: fixed;
+}
+
+.container tbody{
+  position: relative;
+  top: 20px;
+}
+
+.cantidad{
+  width: 300px;
+  height: 150px;
+  position: absolute;
+  z-index: 20;
+  background-color: green;
+  top: 25%;
+  left: 25%;
+  text-align: center;
+  border-radius: 5px;
+}
+.cantidad button{
+  margin: 10px 20px;
+}
+
+.oculto{
+  display: none;
+}
