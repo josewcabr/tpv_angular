@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import {ProductsService} from '../services/products.service';
@@ -7,22 +7,37 @@ import {Subscription} from 'rxjs';
 import {SelectionlistComponent} from './selectionlist/selectionlist.component';
 import {ListPanelComponent} from './list-panel/list-panel.component';
 import {ProductoSeleccionado} from '../models/producto-seleccionado';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-sells',
   templateUrl: './sells.component.html',
   styleUrls: ['./sells.component.css']
 })
-export class SellsComponent implements OnInit{
+export class SellsComponent implements OnInit, AfterViewInit{
+  // Lista de productos extraidos desde la API
   public products: Products[];
+
+  // Lista de productos filtrados por busqueda
   public filteredProducts: Products[];
+
   clickEventSubscription: Subscription;
+
+  // Mostrar panel de seleccion
   public panelSeleccion: boolean;
 
+  // Compente de seleccion de productos
   @ViewChild('componentLista')
   componentLista: SelectionlistComponent;
 
+  // Producto seleccionado que llega desde el panel de selección
   productoSeleccionado: ProductoSeleccionado;
+
+  // Lista de compra
+  listaCompra: ProductoSeleccionado[];
+
+  // suma precios
+  sumaTotal: number;
 
 
   /** Based on the screen size, switch from standard to one column per row */
@@ -44,9 +59,25 @@ export class SellsComponent implements OnInit{
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver, private productsService: ProductsService) {}
+  constructor(private breakpointObserver: BreakpointObserver, private productsService: ProductsService, private cdRef: ChangeDetectorRef) {}
+
+  ngAfterViewInit(): void {
+    let suma = 0;
+    if (this.listaCompra[0] !== undefined) {
+
+      for (let element of this.listaCompra) {
+        console.log(element.cantidad, element.producto.price);
+        suma += element.cantidad * element.producto.price;
+
+      }
+
+      this.sumaTotal = suma;
+      this.cdRef.detectChanges();
+    }
+  }
 
   ngOnInit(): void {
+    this.sumaTotal = 0;
     this.panelSeleccion = true;
     this.productsService.getProduct().subscribe(
       res => {
@@ -67,5 +98,9 @@ export class SellsComponent implements OnInit{
     this.productoSeleccionado = prod;
   }
 
+  procesarListaCompra(productos: ProductoSeleccionado[]): void {
+    this.listaCompra = productos;
+    this.ngAfterViewInit();
+  }
 
 }

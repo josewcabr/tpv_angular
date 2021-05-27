@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, OnChanges} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, Output, EventEmitter} from '@angular/core';
 import {Products} from '../../models/products';
 import {ProductoSeleccionado} from '../../models/producto-seleccionado';
 
@@ -16,6 +16,9 @@ export class ListPanelComponent implements OnInit, OnChanges {
   @Input()
   public producto: ProductoSeleccionado;
 
+  @Output()
+  listaEmit = new EventEmitter<ProductoSeleccionado[]>();
+
   constructor() {
     this.productosSeleccionados = [];
   }
@@ -29,7 +32,9 @@ export class ListPanelComponent implements OnInit, OnChanges {
       this.productosSeleccionados.pop();
     }
     this.productosSeleccionados.push(this.producto);
-    console.log(this.productosSeleccionados);
+    if (this.productosSeleccionados.length > 0) {
+      this.listaEmit.emit(this.productosSeleccionados);
+    }
   }
 
 

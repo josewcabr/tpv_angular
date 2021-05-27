@@ -1,1 +1,22 @@
-<div class="container"></div>
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Tipo de prenda</th>
+        <th>Precio (€)</th>
+        <th>Cantidad</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="productosSeleccionados[0] !== undefined">
+        <tr *ngFor="let prod of productosSeleccionados" >
+          <td>{{prod.producto.id}}</td>
+          <td>{{prod.producto.name}}</td>
+          <td>{{prod.producto.wearType}}</td>
+          <td>{{prod.producto.price}}</td>
+          <td>{{prod.cantidad}}</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
