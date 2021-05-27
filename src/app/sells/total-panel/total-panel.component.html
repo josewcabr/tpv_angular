@@ -1,1 +1,19 @@
-<p>{{sumaTotal}}</p>
+<div class="calculo">
+  <div class="subtotal">
+    <h3>Subtotal</h3>
+    <p>{{(sumaTotal).toFixed(2)}} €</p>
+  </div>
+  <div class="iva">
+    <h3>IVA 21%</h3>
+    <p>{{(sumaTotal * 0.21).toFixed(2)}} €</p>
+  </div>
+  <hr>
+  <div class="total">
+    <h2>Total</h2>
+    <p>{{(sumaTotal * 1.21).toFixed(2)}} €</p>
+  </div>
+</div>
+<div class="btn_pago">
+  <button mat-raised-button class="btn">Pagar</button>
+</div>
+

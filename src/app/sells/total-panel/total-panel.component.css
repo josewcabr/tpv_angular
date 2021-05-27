@@ -1,0 +1,22 @@
+.calculo{
+  position: relative;
+  top: 30px;
+  margin: 20px;
+}
+.subtotal, .iva, .total{
+  display: flex;
+  align-items:center;
+  justify-content: space-between;
+}
+.btn{
+  background-color: green;
+  color: white;
+  padding: 10px 50px;
+}
+
+.btn_pago{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top: 80px;
+}
