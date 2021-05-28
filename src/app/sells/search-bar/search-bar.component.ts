@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
 import {ProductsService} from '../../services/products.service';
 import {Products} from '../../models/products';
 
@@ -14,6 +14,9 @@ export class SearchBarComponent implements OnInit {
   pistaProductoEmit = new EventEmitter<string>();
 
   value = '';
+
+  @Input()
+  selectedClient: string;
 
   constructor(private productsService: ProductsService) { }
 
@@ -34,6 +37,8 @@ export class SearchBarComponent implements OnInit {
       this.value = '';
     }
   }
+
+
 
 
 }

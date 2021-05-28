@@ -30,6 +30,7 @@ import {ProductsService} from './services/products.service';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
 import { SelectionlistComponent } from './sells/selectionlist/selectionlist.component';
+import { ListaClientesComponent } from './sells/lista-clientes/lista-clientes.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { SelectionlistComponent } from './sells/selectionlist/selectionlist.comp
     SearchBarComponent,
     ListPanelComponent,
     TotalPanelComponent,
-    SelectionlistComponent
+    SelectionlistComponent,
+    ListaClientesComponent
 
   ],
   imports: [

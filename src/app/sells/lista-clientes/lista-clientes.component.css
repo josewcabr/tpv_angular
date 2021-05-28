@@ -1,0 +1,13 @@
+.contenedor{
+  padding: 20px;
+
+}
+
+.boton_cancelar{
+  display: flex;
+  justify-content: center;
+}
+
+.btn{
+  margin: 10px 5px;
+}

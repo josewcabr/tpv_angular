@@ -8,6 +8,8 @@ import {SelectionlistComponent} from './selectionlist/selectionlist.component';
 import {ListPanelComponent} from './list-panel/list-panel.component';
 import {ProductoSeleccionado} from '../models/producto-seleccionado';
 import { ChangeDetectorRef } from '@angular/core';
+import {Client} from '../models/client';
+import {ClientsService} from '../services/clients.service';
 
 @Component({
   selector: 'app-sells',
@@ -39,6 +41,12 @@ export class SellsComponent implements OnInit, AfterViewInit{
   // suma precios
   sumaTotal: number;
 
+  // Lista Clientes
+  listaClientes: Client[];
+
+  // Cliente seleccionado
+  selectedClient: Client;
+
 
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
@@ -59,7 +67,10 @@ export class SellsComponent implements OnInit, AfterViewInit{
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver, private productsService: ProductsService, private cdRef: ChangeDetectorRef) {}
+  constructor(private breakpointObserver: BreakpointObserver,
+              private productsService: ProductsService,
+              private clientsService: ClientsService,
+              private cdRef: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
     let suma = 0;
@@ -85,6 +96,14 @@ export class SellsComponent implements OnInit, AfterViewInit{
       }
       ,
       err => console.error(err));
+
+    this.clientsService.getProduct().subscribe(
+      res => {
+        this.listaClientes = res;
+      }
+      ,
+      err => console.error(err)
+    );
   }
 
   procesarPistaBuscar(pista): void{
@@ -101,6 +120,11 @@ export class SellsComponent implements OnInit, AfterViewInit{
   procesarListaCompra(productos: ProductoSeleccionado[]): void {
     this.listaCompra = productos;
     this.ngAfterViewInit();
+  }
+
+  asignaCliente(cliente: Client): void{
+    this.selectedClient = cliente;
+    console.log(this.selectedClient);
   }
 
 }
