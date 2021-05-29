@@ -9,8 +9,8 @@
 
 </div>
 <div class="client_opc">
-  <button mat-raised-button color="warn">Cancelar venta</button>
-  <button mat-flat-button color="primary">{{selectedClient || "Seleccionar Cliente"}}</button>
+  <button mat-raised-button color="warn" (click)="cancelarOperacion()">Cancelar venta</button>
+  <button mat-flat-button color="primary" (click)="seleccionCliente()">{{valorBotonCliente}}</button>
 </div>
 
 

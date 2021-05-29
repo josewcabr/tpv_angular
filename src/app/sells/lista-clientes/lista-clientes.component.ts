@@ -23,6 +23,7 @@ export class ListaClientesComponent implements OnInit, OnChanges {
 
   constructor() {
     this.value = '';
+    this.ventanaSeleccion = true;
   }
 
   ngOnInit(): void {

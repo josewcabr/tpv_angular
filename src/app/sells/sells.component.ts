@@ -10,6 +10,8 @@ import {ProductoSeleccionado} from '../models/producto-seleccionado';
 import { ChangeDetectorRef } from '@angular/core';
 import {Client} from '../models/client';
 import {ClientsService} from '../services/clients.service';
+import {TotalPanelComponent} from './total-panel/total-panel.component';
+import {ListaClientesComponent} from './lista-clientes/lista-clientes.component';
 
 @Component({
   selector: 'app-sells',
@@ -31,6 +33,14 @@ export class SellsComponent implements OnInit, AfterViewInit{
   // Compente de seleccion de productos
   @ViewChild('componentLista')
   componentLista: SelectionlistComponent;
+
+  // Componente lista de compra seleccionada
+  @ViewChild('componentCompra')
+  componentCompra: ListPanelComponent;
+
+  // Componente calculo total
+  @ViewChild('componentListaClientes')
+  componentListaClientes: ListaClientesComponent;
 
   // Producto seleccionado que llega desde el panel de selección
   productoSeleccionado: ProductoSeleccionado;
@@ -125,6 +135,16 @@ export class SellsComponent implements OnInit, AfterViewInit{
   asignaCliente(cliente: Client): void{
     this.selectedClient = cliente;
     console.log(this.selectedClient);
+  }
+
+  cancelarOperacion(): void{
+    this.componentCompra.productosSeleccionados = [];
+    this.sumaTotal = 0;
+    console.log('op. cancelada');
+  }
+
+  abrirPanelSeleccionClientes(): void{
+    this.componentListaClientes.ventanaSeleccion = false;
   }
 
 }

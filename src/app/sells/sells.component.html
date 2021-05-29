@@ -4,10 +4,12 @@
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
         <div *ngIf="card.title === 'search_panel'" class="search_panel" >
-          <app-search-bar (pistaProductoEmit)="procesarPistaBuscar($event)" [selectedClient]="selectedClient"></app-search-bar>
+          <app-search-bar (pistaProductoEmit)="procesarPistaBuscar($event)"
+                          [selectedClient]="selectedClient"
+                          (cancelOperationEmit)="cancelarOperacion()" (seleccionClientEmit)="abrirPanelSeleccionClientes()"></app-search-bar>
         </div>
         <div *ngIf="card.title === 'list_panel'">
-          <app-list-panel [producto]="productoSeleccionado" (listaEmit)="procesarListaCompra($event)"></app-list-panel>
+          <app-list-panel [producto]="productoSeleccionado" (listaEmit)="procesarListaCompra($event)" #componentCompra></app-list-panel>
         </div>
         <div *ngIf="card.title === 'total_panel'">
           <app-total-panel [sumaTotal]="sumaTotal"></app-total-panel>
@@ -20,5 +22,5 @@
                      [products]="filteredProducts"
                      [ngClass]="{'oculto':panelSeleccion}" (prodEmit)="procesarProd($event)">
   </app-selectionlist>
-  <app-lista-clientes class="emergente" [listaClientes]="listaClientes" (clienteEmit)="asignaCliente($event)"></app-lista-clientes>
+  <app-lista-clientes class="emergente" [listaClientes]="listaClientes" (clienteEmit)="asignaCliente($event)" #componentListaClientes></app-lista-clientes>
 </div>
