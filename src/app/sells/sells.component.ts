@@ -12,6 +12,8 @@ import {Client} from '../models/client';
 import {ClientsService} from '../services/clients.service';
 import {TotalPanelComponent} from './total-panel/total-panel.component';
 import {ListaClientesComponent} from './lista-clientes/lista-clientes.component';
+import {Compra} from '../models/compra';
+import {CompraService} from '../services/compra.service';
 
 @Component({
   selector: 'app-sells',
@@ -57,6 +59,9 @@ export class SellsComponent implements OnInit, AfterViewInit{
   // Cliente seleccionado
   selectedClient: Client;
 
+  // Objeto con datos de la compra
+  objetoPago: Compra;
+
 
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
@@ -80,7 +85,8 @@ export class SellsComponent implements OnInit, AfterViewInit{
   constructor(private breakpointObserver: BreakpointObserver,
               private productsService: ProductsService,
               private clientsService: ClientsService,
-              private cdRef: ChangeDetectorRef) {}
+              private cdRef: ChangeDetectorRef,
+              private compraService: CompraService) {}
 
   ngAfterViewInit(): void {
     let suma = 0;
@@ -140,11 +146,30 @@ export class SellsComponent implements OnInit, AfterViewInit{
   cancelarOperacion(): void{
     this.componentCompra.productosSeleccionados = [];
     this.sumaTotal = 0;
+    this.listaCompra = [];
     console.log('op. cancelada');
   }
 
   abrirPanelSeleccionClientes(): void{
     this.componentListaClientes.ventanaSeleccion = false;
+  }
+
+  realizarPago(): void{
+    if (this.listaCompra.length > 0 && this.selectedClient !== undefined){
+      for (let prod of this.listaCompra){
+        this.objetoPago = {
+          id_cliente : this.selectedClient.id,
+          id_producto : prod.producto.id,
+          ammount : prod.cantidad
+        };
+        this.compraService
+          .postCompra(this.objetoPago)
+          .subscribe();
+        console.log(this.objetoPago);
+      }
+    }else{
+      console.log('No hay cliente seleccionado o el carrito esta vacio');
+    }
   }
 
 }

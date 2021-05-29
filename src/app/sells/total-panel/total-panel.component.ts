@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, OnChanges} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, Output, EventEmitter} from '@angular/core';
 import {ProductoSeleccionado} from '../../models/producto-seleccionado';
 
 @Component({
@@ -13,6 +13,9 @@ export class TotalPanelComponent implements OnInit, OnChanges {
   @Input()
   sumaTotal: number;
 
+  @Output()
+  pagoEmit = new EventEmitter<boolean>();
+
   constructor() {
 
   }
@@ -23,6 +26,10 @@ export class TotalPanelComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void{
 
+  }
+
+  pagar(): void{
+    this.pagoEmit.emit(true);
   }
 
 

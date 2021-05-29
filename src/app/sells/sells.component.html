@@ -12,7 +12,7 @@
           <app-list-panel [producto]="productoSeleccionado" (listaEmit)="procesarListaCompra($event)" #componentCompra></app-list-panel>
         </div>
         <div *ngIf="card.title === 'total_panel'">
-          <app-total-panel [sumaTotal]="sumaTotal"></app-total-panel>
+          <app-total-panel [sumaTotal]="sumaTotal" (pagoEmit)="realizarPago()"></app-total-panel>
         </div>
       </mat-card>
     </mat-grid-tile>
