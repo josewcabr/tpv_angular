@@ -29,8 +29,11 @@ export class PanelAddClienteComponent implements OnInit {
 
     if (this.nombre !== undefined && this.apellido !== undefined && this.phone !== undefined){
       this.nuevoCliente = {
-        name : this.nombre,
-        lastName : this.apellido,
+        name : this.nombre.charAt(0).toUpperCase() + this.nombre.slice(1),
+        lastName : this.apellido.split(' ')[0].charAt(0).toUpperCase()
+                  + this.apellido.split(' ')[0].slice(1) + ' '
+                  + this.apellido.split(' ')[1].charAt(0).toUpperCase()
+          + this.apellido.split(' ')[1].slice(1),
         phone: this.phone.slice(0, 3) + '-' + this.phone.slice(4)
       };
       this.nuevoClientEmit.emit(this.nuevoCliente);
