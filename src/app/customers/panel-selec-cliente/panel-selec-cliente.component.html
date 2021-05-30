@@ -1,0 +1,19 @@
+<div class="container" [ngClass]="{'oculto':panelSeleccion}">
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Teléfono</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of listaClientes" (click)="seleccionCliente(cliente)">
+        <td>{{cliente.name}}</td>
+        <td>{{cliente.lastName}}</td>
+        <td>{{cliente.phone}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button mat-raised-button color="warn" (click)="panelSeleccion = true">Cancelar</button>
+</div>

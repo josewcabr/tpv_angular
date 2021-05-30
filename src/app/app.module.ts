@@ -31,6 +31,12 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
 import { SelectionlistComponent } from './sells/selectionlist/selectionlist.component';
 import { ListaClientesComponent } from './sells/lista-clientes/lista-clientes.component';
+import { PanelVerAgregarComponent } from './customers/panel-ver-agregar/panel-ver-agregar.component';
+import { PanelEstadisticasComponent } from './customers/panel-estadisticas/panel-estadisticas.component';
+import { PanelSelecClienteComponent } from './customers/panel-selec-cliente/panel-selec-cliente.component';
+import { PanelAddClienteComponent } from './customers/panel-add-cliente/panel-add-cliente.component';
+import { PanelErrorComponent } from './customers/panel-error/panel-error.component';
+
 
 
 @NgModule({
@@ -45,7 +51,12 @@ import { ListaClientesComponent } from './sells/lista-clientes/lista-clientes.co
     ListPanelComponent,
     TotalPanelComponent,
     SelectionlistComponent,
-    ListaClientesComponent
+    ListaClientesComponent,
+    PanelVerAgregarComponent,
+    PanelEstadisticasComponent,
+    PanelSelecClienteComponent,
+    PanelAddClienteComponent,
+    PanelErrorComponent
 
   ],
   imports: [

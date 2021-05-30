@@ -1,0 +1,33 @@
+<div class="form_cliente" [ngClass]="{'oculto': panelForm}">
+  <div class="contenedor">
+    <h2>Registro de nuevo cliente</h2>
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput matInput type="text"  [(ngModel)]="nombre">
+      <button mat-button *ngIf="nombre" matSuffix mat-icon-button aria-label="Clear" (click)="nombre=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Apellido</mat-label>
+      <input matInput matInput type="text"  [(ngModel)]="apellido">
+      <button mat-button *ngIf="apellido" matSuffix mat-icon-button aria-label="Clear" (click)="apellido=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Telefono</mat-label>
+      <input matInput matInput type="text"  [(ngModel)]="phone">
+      <button mat-button *ngIf="phone" matSuffix mat-icon-button aria-label="Clear" (click)="phone=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+
+  </div>
+  <div class="btns">
+    <button mat-flat-button color="primary" (click)="addCliente()">Añadir cliente</button>
+    <button mat-flat-button color="warn" (click)="panelForm=true">Cancelar</button>
+  </div>
+</div>
+

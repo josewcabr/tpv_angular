@@ -1,0 +1,8 @@
+.panel {
+  top: 10px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  align-content: center;
+}
