@@ -37,3 +37,14 @@
   border-radius: 10px;
 
 }
+
+.error{
+  width: 350px;
+  text-align: center;
+  padding: 20px;
+}
+
+.oculto{
+  display: none;
+}
+

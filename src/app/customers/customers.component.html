@@ -19,4 +19,6 @@
                            [listaClientes]="filteredClientes"
                            (clientSelectedEmit)="procesarCliente($event)"></app-panel-selec-cliente>
   <app-panel-add-cliente #componentAddCliente class="emergente form_cliente" (nuevoClientEmit)="addNuevoCliente($event)"></app-panel-add-cliente>
+  <app-panel-error #componentError class="emergente error"
+                   [ngClass]="{'oculto': panelError}" (cerrarErrorEmit)="procesarCerrarError()"></app-panel-error>
 </div>

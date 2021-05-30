@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-panel-error',
@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PanelErrorComponent implements OnInit {
 
+  titulo: string;
+  mensaje: string;
+
+
+  @Output()
+  cerrarErrorEmit = new EventEmitter<boolean>();
+
   constructor() { }
 
   ngOnInit(): void {
+    this.titulo = '';
+    this.mensaje = '';
+  }
+
+  cerraError(): void{
+    this.cerrarErrorEmit.emit(true);
   }
 
 }

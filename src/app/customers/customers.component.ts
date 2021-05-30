@@ -6,6 +6,7 @@ import {CompraService} from '../services/compra.service';
 import {Client} from '../models/client';
 import {PanelSelecClienteComponent} from './panel-selec-cliente/panel-selec-cliente.component';
 import {PanelAddClienteComponent} from './panel-add-cliente/panel-add-cliente.component';
+import {PanelErrorComponent} from './panel-error/panel-error.component';
 
 @Component({
   selector: 'app-customers',
@@ -28,6 +29,11 @@ export class CustomersComponent implements OnInit{
 
   @ViewChild('componentAddCliente')
   componentAddCliente: PanelAddClienteComponent;
+
+  @ViewChild('componentError')
+  componentError: PanelErrorComponent;
+
+  panelError: boolean;
 
 
   /** Based on the screen size, switch from standard to one column per row */
@@ -59,6 +65,7 @@ export class CustomersComponent implements OnInit{
       ,
       err => console.error(err)
     );
+    this.panelError = true;
   }
 
   procesarSeleccionCliente(value): void{
@@ -82,10 +89,29 @@ export class CustomersComponent implements OnInit{
   }
 
   addNuevoCliente(cliente: Client): void{
-    this.clientsService
-      .postClient(cliente)
-      .subscribe();
-    console.log(cliente);
+    let existe = false;
+    if (this.listaClientes.find(c => c.phone === cliente.phone)){
+      existe = true;
+    }
+
+    if (existe){
+      this.componentError.titulo = 'Error';
+      this.componentError.mensaje = 'El número de telefono ya existe';
+      this.panelError = false;
+
+    }
+    else{
+      this.clientsService
+        .postClient(cliente)
+        .subscribe();
+      console.log(cliente);
+    }
+
+  }
+  procesarCerrarError(): void{
+    this.panelError = true;
+    this.componentError.titulo = '';
+    this.componentError.mensaje = '';
   }
 
 
