@@ -36,6 +36,7 @@ import { PanelEstadisticasComponent } from './customers/panel-estadisticas/panel
 import { PanelSelecClienteComponent } from './customers/panel-selec-cliente/panel-selec-cliente.component';
 import { PanelAddClienteComponent } from './customers/panel-add-cliente/panel-add-cliente.component';
 import { PanelErrorComponent } from './customers/panel-error/panel-error.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -78,7 +79,8 @@ import { PanelErrorComponent } from './customers/panel-error/panel-error.compone
     MatInputModule,
     HttpClientModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    ChartsModule
   ],
   providers: [ProductsService],
   entryComponents: [],

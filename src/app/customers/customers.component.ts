@@ -7,6 +7,8 @@ import {Client} from '../models/client';
 import {PanelSelecClienteComponent} from './panel-selec-cliente/panel-selec-cliente.component';
 import {PanelAddClienteComponent} from './panel-add-cliente/panel-add-cliente.component';
 import {PanelErrorComponent} from './panel-error/panel-error.component';
+import {Compra} from '../models/compra';
+import {CompraRes} from '../models/compra-res';
 
 @Component({
   selector: 'app-customers',
@@ -34,6 +36,10 @@ export class CustomersComponent implements OnInit{
   componentError: PanelErrorComponent;
 
   panelError: boolean;
+
+  comprasAll: CompraRes[];
+
+  filteredCompras: CompraRes[];
 
 
   /** Based on the screen size, switch from standard to one column per row */
@@ -66,7 +72,17 @@ export class CustomersComponent implements OnInit{
       err => console.error(err)
     );
     this.panelError = true;
+
+    this.compraService.getCompra().subscribe(
+      res => {
+        this.comprasAll = res;
+      }
+      ,
+      err => console.error(err)
+    );
   }
+
+  // Guarda los clientes que coincidan con la pista de busqueda
 
   procesarSeleccionCliente(value): void{
     this.filteredClientes = this.listaClientes.filter(e => e.name.toLowerCase().includes(value));
@@ -78,15 +94,25 @@ export class CustomersComponent implements OnInit{
     console.log(this.filteredClientes);
   }
 
-  procesarCliente(client): void{
+  // Guarda el cliente final seleccionado y muestra su actividad
+
+  procesarCliente(client: Client): void{
     this.selectedClient = client;
+    console.log(this.comprasAll, client.id);
+    this.filteredCompras = this.comprasAll.filter(c => c.cliente.id === client.id);
+    console.log(this.filteredCompras);
     this.componentPanelSeleccion.panelSeleccion = true;
+
   }
+
+  // Activa el formulario de nuevo registro de cliente
 
   mostrarFormNuevoCliente(): void{
     this.componentAddCliente.panelForm = false;
     console.log('mostrar panel form cliente nuevo');
   }
+
+  // Comprueba si el telefono del cliente a registrar no esta repetido, si no lo esta lo registra con POST
 
   addNuevoCliente(cliente: Client): void{
     let existe = false;
@@ -108,6 +134,9 @@ export class CustomersComponent implements OnInit{
     }
 
   }
+
+  // Gestion del boton de cerrar mensaje de error
+
   procesarCerrarError(): void{
     this.panelError = true;
     this.componentError.titulo = '';

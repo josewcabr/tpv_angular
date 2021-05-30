@@ -3,6 +3,7 @@ import {Observable, Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Client} from '../models/client';
 import {Compra} from '../models/compra';
+import {CompraRes} from '../models/compra-res';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,8 @@ export class CompraService {
     this.subject.next();
   }
 
-  getCompra(): Observable<Compra[]>{
-    return this.http.get<Compra[]>(`${this.API_URL}/compra`);
+  getCompra(): Observable<CompraRes[]>{
+    return this.http.get<CompraRes[]>(`${this.API_URL}/compra`);
   }
 
   postCompra(compra: Compra): Observable<Compra>{
