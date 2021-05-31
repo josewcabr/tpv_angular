@@ -37,6 +37,9 @@ import { PanelSelecClienteComponent } from './customers/panel-selec-cliente/pane
 import { PanelAddClienteComponent } from './customers/panel-add-cliente/panel-add-cliente.component';
 import { PanelErrorComponent } from './customers/panel-error/panel-error.component';
 import { ChartsModule } from 'ng2-charts';
+import { PanelSellStatisticsComponent } from './statistics/panel-sell-statistics/panel-sell-statistics.component';
+import { PanelProductSelectionComponent } from './statistics/panel-product-selection/panel-product-selection.component';
+import { PanelSeleccionProdEmergenteComponent } from './statistics/panel-seleccion-prod-emergente/panel-seleccion-prod-emergente.component';
 
 
 
@@ -57,7 +60,10 @@ import { ChartsModule } from 'ng2-charts';
     PanelEstadisticasComponent,
     PanelSelecClienteComponent,
     PanelAddClienteComponent,
-    PanelErrorComponent
+    PanelErrorComponent,
+    PanelSellStatisticsComponent,
+    PanelProductSelectionComponent,
+    PanelSeleccionProdEmergenteComponent
 
   ],
   imports: [

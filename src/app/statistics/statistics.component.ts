@@ -1,33 +1,68 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import {ClientsService} from '../services/clients.service';
+import {CompraService} from '../services/compra.service';
+import {ProductsService} from '../services/products.service';
+import {Products} from '../models/products';
+import {CompraRes} from '../models/compra-res';
 
 @Component({
   selector: 'app-statistics',
   templateUrl: './statistics.component.html',
   styleUrls: ['./statistics.component.css']
 })
-export class StatisticsComponent {
+export class StatisticsComponent implements OnInit{
+
+  listaProductos: Products[];
+
+  comprasAll: CompraRes[];
+
+  filteredProducts: Products[];
+
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
+          { title: 'buscarProd', cols: 1, rows: 1 },
+          { title: 'estadisticasProd', cols: 3, rows: 4 }
+
         ];
       }
 
       return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
+        { title: 'buscarProd', cols: 1, rows: 1 },
+        { title: 'estadisticasProd', cols: 3, rows: 4 }
       ];
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver,
+              private productService: ProductsService,
+              private compraService: CompraService) {}
+
+  ngOnInit(): void {
+    this.productService.getProduct().subscribe(
+      res => {
+        this.listaProductos = res;
+      }
+      ,
+      err => console.error(err)
+    );
+    this.compraService.getCompra().subscribe(
+      res => {
+        this.comprasAll = res;
+      }
+      ,
+      err => console.error(err)
+    );
+  }
+
+  procesarProductoSelect(pistaProd): void{
+    this.filteredProducts = this.listaProductos.filter(p => p.name.toLowerCase().includes(pistaProd));
+  }
+
+
+
 }
