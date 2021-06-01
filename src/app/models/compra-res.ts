@@ -11,6 +11,7 @@ export interface CompraRes {
   producto: {
     id: number,
     name: string,
+    wearType: string
     price: number
   };
 }

@@ -59,13 +59,14 @@ export class PanelSellStatisticsComponent implements OnInit, OnChanges {
         let counter = 0;
         for (const compra of this.filteredCompras) {
           if (compra.date.split('-')[1] === this.mesesConCero[i]) {
-            counter++;
+            console.log(compra.amount);
+            counter += compra.amount;
           }
         }
         this.datosCompra.push(counter);
       }
       this.barChartData = [
-        {data: this.datosCompra, label: this.productoSelected.name, fill : false}
+        {data: this.datosCompra, label: this.productoSelected.name + ' | id : ' + this.productoSelected.id, fill : false}
       ];
     }
   }

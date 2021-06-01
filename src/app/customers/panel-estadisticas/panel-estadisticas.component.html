@@ -14,13 +14,14 @@
     <table class="tabla_historial">
       <tr *ngFor="let compra of compras">
         <td *ngIf="compra.date === fecha">{{compra.producto.name}}</td>
+        <td *ngIf="compra.date === fecha">{{compra.producto.wearType}}</td>
         <td *ngIf="compra.date === fecha">{{compra.amount}} x {{compra.producto.price}} €</td>
       </tr>
       <tr>
-        <td colspan="2"><hr></td>
+        <td colspan="3"><hr></td>
       </tr>
       <tr class="total">
-        <td>Total + IVA</td>
+        <td colspan="2">Total + IVA</td>
         <td>{{calcularTotal(fecha).toFixed(2)}} €</td>
       </tr>
     </table>
