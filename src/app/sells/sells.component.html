@@ -4,7 +4,7 @@
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
         <div *ngIf="card.title === 'search_panel'" class="search_panel" >
-          <app-search-bar (pistaProductoEmit)="procesarPistaBuscar($event)"
+          <app-search-bar #componentSearch (pistaProductoEmit)="procesarPistaBuscar($event)"
                           [selectedClient]="selectedClient"
                           (cancelOperationEmit)="cancelarOperacion()" (seleccionClientEmit)="abrirPanelSeleccionClientes()"></app-search-bar>
         </div>

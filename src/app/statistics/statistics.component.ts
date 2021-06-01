@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import {ClientsService} from '../services/clients.service';
@@ -6,6 +6,7 @@ import {CompraService} from '../services/compra.service';
 import {ProductsService} from '../services/products.service';
 import {Products} from '../models/products';
 import {CompraRes} from '../models/compra-res';
+import {PanelSeleccionProdEmergenteComponent} from './panel-seleccion-prod-emergente/panel-seleccion-prod-emergente.component';
 
 @Component({
   selector: 'app-statistics',
@@ -19,6 +20,13 @@ export class StatisticsComponent implements OnInit{
   comprasAll: CompraRes[];
 
   filteredProducts: Products[];
+
+  filteredCompras: CompraRes[];
+
+  selectedProd: Products;
+
+  @ViewChild('panelprodemergente')
+  panelprodemergente: PanelSeleccionProdEmergenteComponent;
 
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
@@ -61,6 +69,12 @@ export class StatisticsComponent implements OnInit{
 
   procesarProductoSelect(pistaProd): void{
     this.filteredProducts = this.listaProductos.filter(p => p.name.toLowerCase().includes(pistaProd));
+    this.panelprodemergente.panelSelect = false;
+  }
+
+  procesarProdcuto(prod: Products): void{
+    this.selectedProd = prod;
+    this.filteredCompras = this.comprasAll.filter(c => c.producto.id === prod.id);
   }
 
 

@@ -14,6 +14,7 @@ import {TotalPanelComponent} from './total-panel/total-panel.component';
 import {ListaClientesComponent} from './lista-clientes/lista-clientes.component';
 import {Compra} from '../models/compra';
 import {CompraService} from '../services/compra.service';
+import {SearchBarComponent} from './search-bar/search-bar.component';
 
 @Component({
   selector: 'app-sells',
@@ -43,6 +44,9 @@ export class SellsComponent implements OnInit, AfterViewInit{
   // Componente calculo total
   @ViewChild('componentListaClientes')
   componentListaClientes: ListaClientesComponent;
+
+  @ViewChild('componentSearch')
+  componentSearch: SearchBarComponent;
 
   // Producto seleccionado que llega desde el panel de selección
   productoSeleccionado: ProductoSeleccionado;
@@ -147,6 +151,7 @@ export class SellsComponent implements OnInit, AfterViewInit{
     this.componentCompra.productosSeleccionados = [];
     this.sumaTotal = 0;
     this.listaCompra = [];
+    this.componentSearch.valorBotonCliente = 'Seleccionar cliente';
     console.log('op. cancelada');
   }
 
@@ -167,6 +172,8 @@ export class SellsComponent implements OnInit, AfterViewInit{
           .subscribe();
         console.log(this.objetoPago);
       }
+      this.cancelarOperacion();
+
     }else{
       console.log('No hay cliente seleccionado o el carrito esta vacio');
     }

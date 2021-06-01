@@ -40,7 +40,7 @@ import { ChartsModule } from 'ng2-charts';
 import { PanelSellStatisticsComponent } from './statistics/panel-sell-statistics/panel-sell-statistics.component';
 import { PanelProductSelectionComponent } from './statistics/panel-product-selection/panel-product-selection.component';
 import { PanelSeleccionProdEmergenteComponent } from './statistics/panel-seleccion-prod-emergente/panel-seleccion-prod-emergente.component';
-
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -86,7 +86,8 @@ import { PanelSeleccionProdEmergenteComponent } from './statistics/panel-selecci
     HttpClientModule,
     MatDialogModule,
     MatTableModule,
-    ChartsModule
+    ChartsModule,
+    MatExpansionModule
   ],
   providers: [ProductsService],
   entryComponents: [],

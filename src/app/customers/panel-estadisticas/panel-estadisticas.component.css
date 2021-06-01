@@ -1,0 +1,18 @@
+.tupla_prod_hist{
+  display: flex;
+  justify-content: space-around;
+}
+.total{
+  position: relative;
+  top: 5px;
+  color: red;
+}
+
+.tabla_historial td{
+  padding:  5px 50px;
+}
+
+.contenedor_historial{
+  height: 60vh;
+  overflow: auto;
+}

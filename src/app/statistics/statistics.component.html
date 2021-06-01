@@ -6,10 +6,12 @@
             <app-panel-product-selection (seleccionProdEmit)="procesarProductoSelect($event)"></app-panel-product-selection>
           </div>
           <div *ngIf="card.title === 'estadisticasProd'">
-            <app-panel-sell-statistics></app-panel-sell-statistics>
+            <app-panel-sell-statistics [filteredCompras]="filteredCompras" [productoSelected]="selectedProd"></app-panel-sell-statistics>
           </div>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
-<app-panel-seleccion-prod-emergente class="emergente"></app-panel-seleccion-prod-emergente>
+<app-panel-seleccion-prod-emergente #panelprodemergente class="emergente"
+                                    [listaProductos]="filteredProducts" (seleccionProdEmit)="procesarProdcuto($event)">
+</app-panel-seleccion-prod-emergente>

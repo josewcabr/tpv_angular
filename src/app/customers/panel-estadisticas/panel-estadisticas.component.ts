@@ -16,6 +16,8 @@ export class PanelEstadisticasComponent implements OnInit, OnChanges {
   @Input()
   compras: CompraRes[];
 
+  fechas: string[];
+
 
   // array con numero de compras por mes
   datosCompra: number[];
@@ -50,6 +52,8 @@ export class PanelEstadisticasComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.datosCompra = [];
     this.mesesConCero = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+
+    this.fechas = [];
   }
 
 
@@ -73,9 +77,31 @@ export class PanelEstadisticasComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
+    this.fechas = [];
+    this.UniqueArray();
     this.actualizarDatosCompra();
-
-
   }
 
+  UniqueArray(): void{
+    if (this.compras !== undefined){
+      for (let i = 0; i < this.compras.length; i++) {
+        if (this.fechas.indexOf(this.compras[i].date) === -1) {
+          this.fechas.push(this.compras[i].date);
+        }
+      }
+      console.log(this.fechas);
+    }
+  }
+
+  calcularTotal(fecha: string): number{
+    let sum = 0;
+    for (let compra of this.compras){
+      if (compra.date === fecha){
+        sum += compra.producto.price * compra.amount;
+      }
+    }
+
+    // Return mas IVA
+    return sum * 1.21;
+  }
 }

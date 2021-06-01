@@ -1,11 +1,30 @@
-<div>
-  <div style="display: block">
-    <canvas baseChart
-            [datasets]="barChartData"
-            [labels]="barChartLabels"
-            [options]="barChartOptions"
-            [legend]="barChartLegend"
-            [chartType]="barChartType">
-    </canvas>
-  </div>
+<div class="contenedor_historial">
+  <h3 *ngIf="cliente !== undefined">{{cliente.name + ' ' + cliente.lastName}}</h3>
+  <mat-expansion-panel *ngFor="let fecha of fechas">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <!--{{cliente.name + ' ' + cliente.lastName}}-->
+        <mat-icon>monetization_on</mat-icon>
+      </mat-panel-title>
+      <mat-panel-description>
+        {{fecha}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <table class="tabla_historial">
+      <tr *ngFor="let compra of compras">
+        <td *ngIf="compra.date === fecha">{{compra.producto.name}}</td>
+        <td *ngIf="compra.date === fecha">{{compra.amount}} x {{compra.producto.price}} €</td>
+      </tr>
+      <tr>
+        <td colspan="2"><hr></td>
+      </tr>
+      <tr class="total">
+        <td>Total + IVA</td>
+        <td>{{calcularTotal(fecha).toFixed(2)}} €</td>
+      </tr>
+    </table>
+
+  </mat-expansion-panel>
 </div>
+

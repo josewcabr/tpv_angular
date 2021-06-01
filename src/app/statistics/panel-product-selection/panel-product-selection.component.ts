@@ -22,5 +22,6 @@ export class PanelProductSelectionComponent implements OnInit {
 
   buscarProducto(value): void{
     this.seleccionProdEmit.emit(value);
+    this.value = '';
   }
 }
