@@ -1,22 +1,30 @@
-<div [ngClass]="{'oculto': panelSelect}" class="contenedor">
-  <table>
-    <thead>
+<div class="main">
+
+  <div [ngClass]="{'oculto': panelSelect}" class="contenedor">
+    <table>
+      <thead>
       <tr>
         <th>Nombre</th>
         <th>Tipo de prenda</th>
         <th>Precio</th>
       </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
       <tr *ngFor="let prod of listaProductos" (click)="seleccionProd(prod)">
         <td>{{prod.name}}</td>
         <td>{{prod.wearType}}</td>
         <td>{{prod.price}}</td>
       </tr>
-    </tbody>
-  </table>
-  <button mat-raised-button color="warn" (click)="panelSelect=true">Cancelar</button>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="btn_cerrar">
+    <button mat-raised-button color="warn" (click)="cerraPanel()">Cancelar</button>
+  </div>
 </div>
+
+
 <!--<mat-expansion-panel>
   <mat-expansion-panel-header>
     <mat-panel-title>

@@ -16,6 +16,9 @@ export class PanelSeleccionProdEmergenteComponent implements OnInit {
   @Output()
   seleccionProdEmit = new EventEmitter<Products>();
 
+  @Output()
+  cerrarPanelEmit = new EventEmitter<boolean>();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -25,5 +28,10 @@ export class PanelSeleccionProdEmergenteComponent implements OnInit {
   seleccionProd(prod: Products): void{
     this.panelSelect = true;
     this.seleccionProdEmit.emit(prod);
+  }
+
+  cerraPanel(): void{
+    this.panelSelect = true;
+    this.cerrarPanelEmit.emit(true);
   }
 }

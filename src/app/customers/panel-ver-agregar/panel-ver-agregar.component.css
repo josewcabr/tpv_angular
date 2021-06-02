@@ -1,8 +1,11 @@
 .panel {
-  top: 10px;
+  top: -15px;
   position: relative;
   display: flex;
   justify-content: space-around;
   align-items: baseline;
   align-content: center;
+}
+.new_client{
+  padding: 10px 20px;
 }

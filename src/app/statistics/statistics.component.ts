@@ -28,6 +28,8 @@ export class StatisticsComponent implements OnInit{
   @ViewChild('panelprodemergente')
   panelprodemergente: PanelSeleccionProdEmergenteComponent;
 
+  panelEmergente: boolean;
+
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
@@ -65,16 +67,23 @@ export class StatisticsComponent implements OnInit{
       ,
       err => console.error(err)
     );
+    this.panelEmergente = true;
   }
 
   procesarProductoSelect(pistaProd): void{
     this.filteredProducts = this.listaProductos.filter(p => p.name.toLowerCase().includes(pistaProd));
     this.panelprodemergente.panelSelect = false;
+    this.panelEmergente = false;
   }
 
   procesarProdcuto(prod: Products): void{
     this.selectedProd = prod;
     this.filteredCompras = this.comprasAll.filter(c => c.producto.id === prod.id);
+    this.panelEmergente = true;
+  }
+
+  cerraPanelEmergente(): void{
+    this.panelEmergente = true;
   }
 
 

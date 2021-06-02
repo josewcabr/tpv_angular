@@ -13,5 +13,7 @@
   </mat-grid-list>
 </div>
 <app-panel-seleccion-prod-emergente #panelprodemergente class="emergente"
-                                    [listaProductos]="filteredProducts" (seleccionProdEmit)="procesarProdcuto($event)">
+                                    [listaProductos]="filteredProducts"
+                                    (seleccionProdEmit)="procesarProdcuto($event)"
+                                    [ngClass]="{'oculto': panelEmergente}" (cerrarPanelEmit)="cerraPanelEmergente()">
 </app-panel-seleccion-prod-emergente>
