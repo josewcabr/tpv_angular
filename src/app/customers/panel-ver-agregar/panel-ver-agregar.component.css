@@ -1,5 +1,5 @@
 .panel {
-  top: -15px;
+  top: 10px;
   position: relative;
   display: flex;
   justify-content: space-around;
@@ -8,4 +8,7 @@
 }
 .new_client{
   padding: 10px 20px;
+}
+mat-form-field{
+  width: 25vw;
 }

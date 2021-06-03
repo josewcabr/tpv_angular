@@ -1,6 +1,6 @@
 <div class="grid-container">
-<!--  <h1 class="mat-h1">Clientes</h1>-->
-  <mat-grid-list cols="3" rowHeight="17vh">
+<h3 class="titulo">Clientes</h3>
+  <mat-grid-list cols="3" rowHeight="16.5vh">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
         <div *ngIf="card.title === 'ver_registrar'">

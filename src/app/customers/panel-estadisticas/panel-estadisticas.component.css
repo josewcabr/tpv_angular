@@ -16,3 +16,15 @@
   height: 60vh;
   overflow: auto;
 }
+
+.no_clientes{
+  top: -325px;
+  font-size: 3em;
+  color: #949494;
+  text-align: center;
+  position: relative;
+  z-index: 50;
+}
+.oculto{
+  display: none;
+}

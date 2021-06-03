@@ -1,5 +1,6 @@
 <div class="grid-container">
-  <mat-grid-list cols="3" rowHeight="17vh">
+  <h3 class="titulo">Estadisticas de venta</h3>
+  <mat-grid-list cols="3" rowHeight="16.5vh">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
           <div *ngIf="card.title === 'buscarProd'">

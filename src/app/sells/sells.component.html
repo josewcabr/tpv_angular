@@ -1,6 +1,6 @@
 <div class="grid-container">
-  <!--<h1 class="mat-h1">Ventas</h1>-->
-  <mat-grid-list cols="6" rowHeight="17vh">
+  <h3 class="titulo">Panel de venta</h3>
+  <mat-grid-list cols="6" rowHeight="16.5vh">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
         <div *ngIf="card.title === 'search_panel'" class="search_panel" >

@@ -3,7 +3,6 @@
   <mat-expansion-panel *ngFor="let fecha of fechas">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        <!--{{cliente.name + ' ' + cliente.lastName}}-->
         <mat-icon>monetization_on</mat-icon>
       </mat-panel-title>
       <mat-panel-description>
@@ -28,4 +27,6 @@
 
   </mat-expansion-panel>
 </div>
-
+<div class="no_clientes" [ngClass]="{'oculto': panelNoClient}">
+  <p>No hay clientes seleccionados</p>
+</div>

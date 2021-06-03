@@ -1,0 +1,11 @@
+.container table{
+  width: 100%;
+  text-align: center;
+}
+.container thead{
+  border-bottom: 2px solid black;
+}
+
+.container td{
+  padding: 10px;
+}

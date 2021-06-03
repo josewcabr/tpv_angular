@@ -18,6 +18,7 @@ export class PanelEstadisticasComponent implements OnInit, OnChanges {
 
   fechas: string[];
 
+  panelNoClient: boolean;
 
   // array con numero de compras por mes
   datosCompra: number[];
@@ -52,7 +53,7 @@ export class PanelEstadisticasComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.datosCompra = [];
     this.mesesConCero = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
-
+    this.panelNoClient = false;
     this.fechas = [];
   }
 
@@ -89,7 +90,7 @@ export class PanelEstadisticasComponent implements OnInit, OnChanges {
           this.fechas.push(this.compras[i].date);
         }
       }
-      console.log(this.fechas);
+      this.panelNoClient = true;
     }
   }
 

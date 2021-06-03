@@ -1,8 +1,29 @@
 .oculto{
   display: none;
 }
-.container table{
+/*.container table{
+  display: flex;
+  flex-direction: column;
   position: relative;
   top: 30px;
   width: 100%;
+}*/
+.btn_cerrar{
+  display: flex;
+  justify-content: center;
+  padding: 20px 10px 10px 10px;
+}
+
+.container table{
+  text-align: center;
+  width: 100%;
+}
+
+.container{
+  padding: 20px;
+}
+
+.container td{
+  padding: 10px 5px;
+  border-bottom: 1px solid grey;
 }

@@ -2,10 +2,13 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+
 }
 .client_opc{
+  position: relative;
   margin-left: 25vw;
   align-self: center;
+  top: -35px;
 }
 
 .client_opc button{
@@ -13,6 +16,7 @@
 }
 
 mat-form-field{
+  position: relative;
+  top: 15px;
   width: 18vw;
 }
-

@@ -39,5 +39,12 @@
   /*display: none;*/
 }
 
+.titulo{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: green;
+  padding: 5px;
+}
 
 
