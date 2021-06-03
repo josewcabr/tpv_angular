@@ -11,3 +11,17 @@
 .btn{
   margin: 10px 5px;
 }
+
+.contenedor table {
+  width: 100%;
+  text-align: center;
+}
+
+.contenedor table td{
+  padding: 10px 5px;
+  border-bottom: 1px solid grey;
+}
+
+.contenedor table td:hover{
+  cursor: pointer;
+}

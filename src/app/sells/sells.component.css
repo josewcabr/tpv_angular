@@ -30,21 +30,25 @@
 .emergente{
   width: 50vw;
   height: auto;
-  background-color: yellow;
+  background-color:  #fafafa;
   position: absolute;
   z-index: 10;
   top: 25%;
   left: 15%;
-  border-radius: 5px;
+  border-radius: 10px;
   /*display: none;*/
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .titulo{
   display: flex;
   justify-content: center;
   text-align: center;
-  background-color: green;
   padding: 5px;
+  background-color: #ffffff;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 5px;
+
 }
 
 

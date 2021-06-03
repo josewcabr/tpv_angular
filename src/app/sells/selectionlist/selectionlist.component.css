@@ -13,25 +13,27 @@
   padding: 2px 30px;
 }
 
-.container thead{
+/*.container thead{
   position: fixed;
-}
+}*/
 
 .container tbody{
   position: relative;
-  top: 20px;
+  /*top: 20px;*/
 }
 
 .cantidad{
+  padding: 20px;
   width: 300px;
   height: 150px;
   position: absolute;
   z-index: 20;
-  background-color: green;
+  background-color: #fafafa;
   top: 25%;
   left: 25%;
   text-align: center;
   border-radius: 5px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .cantidad button{
   margin: 10px 20px;
@@ -40,3 +42,29 @@
 .oculto{
   display: none;
 }
+
+.contenedor{
+  padding: 20px 30px;
+  border-radius: 10px;
+
+}
+
+.container table{
+  position: relative;
+  top: 30px;
+  width: 100%;
+}
+
+.container table td{
+  padding: 10px 10px;
+
+}
+
+.container table tr{
+  border-bottom: 1px solid black;
+}
+
+.container table td:hover{
+  cursor: pointer;
+}
+
